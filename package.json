@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "_dev": "우리가 개발할때 쓰는 개발용 모드",
+    "_build": "서버에 배포한뒤에 프로젝트를 빌드할때",
+    "_start": "서버에 배포한뒤 빌드 후 실행할때 쓰는 것",
+    "_lint": "프로젝트 소스코드를 검사할때 (EsLint)",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
