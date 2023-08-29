@@ -9,6 +9,12 @@ type Props = {
   };
 };
 
+export function generateMetadata({ params }: Props) {
+  return {
+    title: `제품의 이름 ${params.slug}`,
+  };
+}
+
 export default function PantsPage({ params }: Props) {
   // 상품 라우터 내의 notFound 함수 호출
   if (params.slug === "nothing") {
