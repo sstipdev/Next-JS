@@ -3,6 +3,13 @@
 import { getProduct, getProducts } from "@/service/products";
 import { notFound } from "next/navigation";
 
+/**
+ * revalidate default값은 false이기에 ssg로 동작한다.
+ * revalidate 0의 값은 ssr 처럼 동작하여 요청이 올때마다 만든다.
+ * revalidate 3의 값은 3초 마다 revalidate 처리를 한다.
+ */
+export const revalidate = 3;
+
 // 폴더명이 [slug] 가 아닌 [item] 이라면 params의 키 값은 slug가 아닌 item으로 해야한다.
 type Props = {
   params: {
