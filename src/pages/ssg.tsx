@@ -5,7 +5,8 @@ import Link from "next/link";
 type Props = {
   products: Product[];
 };
-export default async function SSGPage({ products }: Props) {
+
+export default function SSGPage({ products }: Props) {
   return (
     <>
       <h1>제품 소개 페이지!</h1>
