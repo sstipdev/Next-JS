@@ -15,6 +15,7 @@ const nextConfig = {
 
   // Redirects
   async redirects() {
+    // A(경로)를 B(경로)로 데려가는 느낌이라고 보면 된다.
     return [
       {
         source: "/products/deleted_forever",
@@ -27,6 +28,21 @@ const nextConfig = {
         destination: "/products",
         // status code 307 임시적인 리다이렉
         permanent: false,
+      },
+    ];
+  },
+
+  // Rewrites
+  async rewrites() {
+    // 기존의 A(url)을 B(url)로 덮어(대체)씌우는 느낌이라고 보면 된다.
+    return [
+      {
+        source: "/sst",
+        destination: "/about/me/sst",
+      },
+      {
+        source: "/items/:slug",
+        destination: "/products/:slug",
       },
     ];
   },
