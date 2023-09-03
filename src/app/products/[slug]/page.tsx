@@ -1,8 +1,9 @@
 // 동적 라우팅 타입
 
 import { getProduct, getProducts } from "@/service/products";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
+import GoProductsButton from "@/components/GoProductsButton";
 
 /**
  * revalidate default값은 false이기에 ssg로 동작한다.
@@ -26,13 +27,16 @@ export function generateMetadata({ params }: Props) {
 
 export default async function ProductPage({ params: { slug } }: Props) {
   const product = await getProduct(slug);
+
   if (!product) {
-    notFound();
+    redirect("/products");
+    // notFound();
   }
   return (
     <>
       <h1>{product.name} 제품 설명 페이지</h1>
       <Image src={product.image} alt={product.name} width={400} height={400} />
+      <GoProductsButton />
     </>
   );
 }
