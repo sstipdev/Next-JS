@@ -1,6 +1,8 @@
 import { getProducts } from "@/service/products";
 import Link from "next/link";
 import MeowArticle from "@/components/MeowArticle";
+import Image from "next/image";
+import clothesImage from "../../../public/images/clothes.jpg";
 
 /**
  * revalidate default값은 false이기에 ssg로 동작한다.
@@ -10,11 +12,13 @@ import MeowArticle from "@/components/MeowArticle";
 // export const revalidate = 3;
 
 export default async function ProductsPage() {
-  throw new Error();
   const products = await getProducts();
+
   return (
     <>
       <h1>제품 소개 페이지!</h1>
+      {/* priority 최우선으로 이미지 다운로드 */}
+      <Image src={clothesImage} alt="Clothes" priority />
       <ul>
         {products.map((product, index) => {
           return (
