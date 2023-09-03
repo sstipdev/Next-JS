@@ -1,6 +1,6 @@
 import { getProducts } from "@/service/products";
 import Link from "next/link";
-import styles from "./page.module.css";
+import MeowArticle from "@/components/MeowArticle";
 
 /**
  * revalidate default값은 false이기에 ssg로 동작한다.
@@ -11,12 +11,6 @@ import styles from "./page.module.css";
 
 export default async function ProductsPage() {
   const products = await getProducts();
-  const res = await fetch("https://meowfacts.herokuapp.com", {
-    // 3초 간격으로 fetch
-    next: { revalidate: 3 },
-  });
-  const data = await res.json();
-  const factText = data.data[0];
   return (
     <>
       <h1>제품 소개 페이지!</h1>
@@ -29,7 +23,7 @@ export default async function ProductsPage() {
           );
         })}
       </ul>
-      <article className={styles.article}>{factText}</article>
+      <MeowArticle />
     </>
   );
 }
